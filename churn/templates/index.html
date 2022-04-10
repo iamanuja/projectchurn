@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Home page</title>
+
+    <script
+      src="https://kit.fontawesome.com/47101d2035.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .center {
+        position: absolute;
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(230, 239, 245);
+      }
+    </style>
+  </head>
+
+  <body class="center">
+    <h1 style="color: rgb(44, 44, 90); font-weight: 700">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="45"
+        height="45"
+        fill="currentColor"
+        class="bi bi-briefcase-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"
+        />
+        <path
+          d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
+        />
+      </svg>
+      Employee churn Predictor
+    </h1>
+
+    <p style="color: rgb(51, 51, 83); font-weight: 700">
+      Can a employee with given data leave the company?
+    </p>
+
+    <form action="result">
+      {% csrf_token %}
+
+      <div class="container" style="width: 700px">
+        <div style="float: left; width: 33%">
+          <input
+            class="form-control"
+            placeholder="Age"
+            required
+            type="text"
+            name="Age"
+          />
+          <input
+            class="form-control"
+            placeholder="BusinessTravel(Non-Travel: 0,Travel_Frequently: 1,Travel_Rarely: 2)"
+            required
+            type="text"
+            name="BusinessTravel"
+          />
+          <input
+            class="form-control"
+            placeholder="DailyRate"
+            required
+            type="text"
+            name="DailyRate"
+          />
+          <input
+            class="form-control"
+            placeholder="Department"
+            required
+            type="text"
+            name="Department"
+          />
+          <input
+            class="form-control"
+            placeholder="DistanceFromHome"
+            type="text"
+            required
+            name="DistanceFromHome"
+          />
+          <input
+            class="form-control"
+            placeholder="Education"
+            required
+            type="text"
+            name="Education"
+          />
+          <input
+            class="form-control"
+            placeholder="EducationField"
+            required
+            type="text"
+            name="EducationField"
+          />
+          <input
+            class="form-control"
+            placeholder="EnvironmentSatisfaction"
+            required
+            type="text"
+            name="EnvironmentSatisfaction"
+          />
+          <input
+            class="form-control"
+            placeholder="Gender"
+            required
+            type="text"
+            name="Gender"
+          />
+          <input
+            class="form-control"
+            placeholder="HourlyRate"
+            required
+            type="text"
+            name="HourlyRate"
+          />
+        </div>
+
+        <div style="float: left; width: 33%">
+          <input
+            class="form-control"
+            placeholder="JobInvolvement"
+            required
+            type="text"
+            name="JobInvolvement"
+          />
+          <input
+            class="form-control"
+            placeholder="JobLevel"
+            required
+            type="text"
+            name="JobLevel"
+          />
+          <input
+            class="form-control"
+            placeholder="JobRole"
+            required
+            type="text"
+            name="JobRole"
+          />
+          <input
+            class="form-control"
+            placeholder="JobSatisfaction"
+            required
+            type="text"
+            name="JobSatisfaction"
+          />
+          <input
+            class="form-control"
+            placeholder="MaritalStatus"
+            type="text"
+            required
+            name="MaritalStatus"
+          />
+          <input
+            class="form-control"
+            placeholder="MonthlyIncome"
+            required
+            type="text"
+            name="MonthlyIncome"
+          />
+          <input
+            class="form-control"
+            placeholder="MonthlyRate"
+            required
+            type="text"
+            name="MonthlyRate"
+          />
+          <input
+            class="form-control"
+            placeholder="NumCompaniesWorked"
+            required
+            type="text"
+            name="NumCompaniesWorked"
+          />
+          <input
+            class="form-control"
+            placeholder="OverTime"
+            required
+            type="text"
+            name="OverTime"
+          />
+          <input
+            class="form-control"
+            placeholder="PercentSalaryHike"
+            required
+            type="text"
+            name="PercentSalaryHike"
+          />
+        </div>
+
+        <div style="float: right; width: 34%">
+          <input
+            class="form-control"
+            placeholder="PerformanceRating"
+            required
+            type="text"
+            name="PerformanceRating"
+          />
+          <input
+            class="form-control"
+            placeholder="RelationshipSatisfaction"
+            required
+            type="text"
+            name="RelationshipSatisfaction"
+          />
+          <input
+            class="form-control"
+            placeholder=" StockOptionLevel"
+            required
+            type="text"
+            name="StockOptionLevel"
+          />
+          <input
+            class="form-control"
+            placeholder="TotalWorkingYears"
+            required
+            type="text"
+            name="TotalWorkingYears"
+          />
+          <input
+            class="form-control"
+            placeholder="TrainingTimesLastYear "
+            type="text"
+            required
+            name="TrainingTimesLastYear"
+          />
+          <input
+            class="form-control"
+            placeholder="WorkLifeBalance"
+            required
+            type="text"
+            name="WorkLifeBalance"
+          />
+          <input
+            class="form-control"
+            placeholder="YearsAtCompany"
+            required
+            type="text"
+            name="YearsAtCompany"
+          />
+          <input
+            class="form-control"
+            placeholder="YearsInCurrentRole"
+            required
+            type="text"
+            name="YearsInCurrentRole"
+          />
+          <input
+            class="form-control"
+            placeholder="YearsSinceLastPromotion"
+            required
+            type="text"
+            name="YearsSinceLastPromotion"
+          />
+          <input
+            class="form-control"
+            placeholder="YearsWithCurrManager"
+            required
+            type="text"
+            name="YearsWithCurrManager"
+          />
+        </div>
+      </div>
+
+      <input
+        class="btn btn-primary btn-lg btn-block"
+        type="submit"
+        value="Predict"
+      />
+    </form>
+  </body>
+</html>
