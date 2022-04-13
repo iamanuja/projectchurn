@@ -3,20 +3,17 @@ from django.shortcuts import render
 # Create your views here.
 import pickle
 
+from requests import request
+
 def home(request):
     return render(request, 'index.html')
 
-def getPredictions(Age,BusinessTravel,DailyRate,Department,DistanceFromHome,Education, EducationField, EnvironmentSatisfaction, Gender,HourlyRate,
-                        JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus, MonthlyIncome, MonthlyRate,NumCompaniesWorked, OverTime,  PercentSalaryHike,
-                        PerformanceRating, RelationshipSatisfaction,StockOptionLevel,TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance,YearsAtCompany, 
-                        YearsInCurrentRole, YearsSinceLastPromotion,YearsWithCurrManager):
-    model = pickle.load(open('adbmodel', 'rb'))
-    # scaled = pickle.load(open('scaler.sav', 'rb'))
-
-    prediction = model.predict([[Age,BusinessTravel,DailyRate,Department,DistanceFromHome,Education, EducationField, EnvironmentSatisfaction, Gender,HourlyRate,
-                        JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus, MonthlyIncome, MonthlyRate,NumCompaniesWorked, OverTime,  PercentSalaryHike,
-                        PerformanceRating, RelationshipSatisfaction,StockOptionLevel,TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance,YearsAtCompany, 
-                        YearsInCurrentRole, YearsSinceLastPromotion,YearsWithCurrManager]])
+def getPredictions(OverTime,DistanceFromHome,Age,EnvironmentSatisfaction,TotalWorkingYears,MonthlyIncome,YearsAtCompany,JobRole,JobInvolvement,WorkLifeBalance,JobLevel,
+    YearsInCurrentRole,DailyRate,MaritalStatus,JobSatisfaction,TrainingTimesLastYear,YearsSinceLastPromotion,MonthlyRate,StockOptionLevel,YearsWithCurrManager):
+    model = pickle.load(open('gnbmodel2', 'rb'))
+    
+    prediction = model.predict([[OverTime,DistanceFromHome,Age,EnvironmentSatisfaction,TotalWorkingYears,MonthlyIncome,YearsAtCompany,JobRole,JobInvolvement,WorkLifeBalance,JobLevel,
+    YearsInCurrentRole,DailyRate,MaritalStatus,JobSatisfaction,TrainingTimesLastYear,YearsSinceLastPromotion,MonthlyRate,StockOptionLevel,YearsWithCurrManager]])
     
     if prediction == 0:
         return 'no'
@@ -26,42 +23,32 @@ def getPredictions(Age,BusinessTravel,DailyRate,Department,DistanceFromHome,Educ
         return 'error'
 
 def result(request):
-    Age=int(request.GET['Age'])
-    BusinessTravel=int(request.GET['BusinessTravel'])
-    DailyRate=int(request.GET['DailyRate'])
-    Department=int(request.GET['Department'])
+    OverTime=int(request.GET['OverTime'])
     DistanceFromHome=int(request.GET['DistanceFromHome'])
-    Education=int(request.GET['Education'])
-    EducationField=int(request.GET['EducationField']) 
+    Age=int(request.GET['Age'])
     EnvironmentSatisfaction=int(request.GET['EnvironmentSatisfaction'])
-    Gender=int(request.GET['Gender'])
-    HourlyRate=int(request.GET['HourlyRate'])
-    JobInvolvement=int(request.GET['JobInvolvement'])
-    JobLevel=int(request.GET['JobLevel'])
-    JobRole=int(request.GET['JobRole'])
-    JobSatisfaction=int(request.GET['JobSatisfaction'])
-    MaritalStatus=int(request.GET['MaritalStatus'])
-    MonthlyIncome=int(request.GET['MonthlyIncome'])
-    MonthlyRate=int(request.GET['MonthlyRate'])
-    NumCompaniesWorked=int(request.GET['NumCompaniesWorked'])
-    OverTime=int(request.GET['OverTime']) 
-    PercentSalaryHike=int(request.GET['PercentSalaryHike'])
-    PerformanceRating=int(request.GET['PerformanceRating']) 
-    RelationshipSatisfaction=int(request.GET['RelationshipSatisfaction'])
-    StockOptionLevel=int(request.GET['StockOptionLevel'])
     TotalWorkingYears=int(request.GET['TotalWorkingYears'])
-    TrainingTimesLastYear=int(request.GET['TrainingTimesLastYear'])
+    MonthlyIncome=int(request.GET['MonthlyIncome'])
+    YearsAtCompany=int(request.GET['YearsAtCompany'])
+    JobRole=int(request.GET['JobRole'])
+    JobInvolvement=int(request.GET['JobInvolvement'])
     WorkLifeBalance=int(request.GET['WorkLifeBalance'])
-    YearsAtCompany=int(request.GET['YearsAtCompany']) 
+    JobLevel=int(request.GET['JobLevel'])
     YearsInCurrentRole=int(request.GET['YearsInCurrentRole'])
+    DailyRate=int(request.GET['DailyRate'])
+    MaritalStatus=int(request.GET['MaritalStatus'])
+    JobSatisfaction=int(request.GET['JobSatisfaction'])
+    TrainingTimesLastYear=int(request.GET['TrainingTimesLastYear'])
     YearsSinceLastPromotion=int(request.GET['YearsSinceLastPromotion'])
+    MonthlyRate=int(request.GET['MonthlyRate'])
+    StockOptionLevel=int(request.GET['StockOptionLevel'])
     YearsWithCurrManager=int(request.GET['YearsWithCurrManager'])
 
-    result = getPredictions(Age,BusinessTravel,DailyRate,Department,DistanceFromHome,Education, EducationField, EnvironmentSatisfaction, Gender,HourlyRate,
-                        JobInvolvement,JobLevel,JobRole,JobSatisfaction,MaritalStatus, MonthlyIncome, MonthlyRate,NumCompaniesWorked, OverTime,  PercentSalaryHike,
-                        PerformanceRating, RelationshipSatisfaction,StockOptionLevel,TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance,YearsAtCompany, 
-                        YearsInCurrentRole, YearsSinceLastPromotion,YearsWithCurrManager)
+    result = getPredictions(OverTime,DistanceFromHome,Age,EnvironmentSatisfaction,TotalWorkingYears,MonthlyIncome,YearsAtCompany,JobRole,JobInvolvement,WorkLifeBalance,JobLevel,
+YearsInCurrentRole,DailyRate,MaritalStatus,JobSatisfaction,TrainingTimesLastYear,YearsSinceLastPromotion,MonthlyRate,StockOptionLevel,YearsWithCurrManager)
 
     return render(request, 'result.html', {'result': result})
+
+
 
 

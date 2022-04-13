@@ -1,13 +1,9 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
     <title>Home page</title>
-
-    <script
-      src="https://kit.fontawesome.com/47101d2035.js"
-      crossorigin="anonymous"
-    ></script>
 
     <link
       rel="stylesheet"
@@ -29,8 +25,11 @@
     </style>
   </head>
 
-  <body class="center">
-    <h1 style="color: rgb(44, 44, 90); font-weight: 700">
+  <body
+    class="center"
+    style="background-image: url('{% static 'images/banner.jpg' %}')"
+  >
+    <h1 style="color: white; font-weight: 700">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="45"
@@ -49,7 +48,7 @@
       Employee churn Predictor
     </h1>
 
-    <p style="color: rgb(51, 51, 83); font-weight: 700">
+    <p style="color: white; font-weight: 700">
       Can a employee with given data leave the company?
     </p>
 
@@ -57,55 +56,35 @@
       {% csrf_token %}
 
       <div class="container" style="width: 700px">
-        <div style="float: left; width: 33%">
+        <div
+          style="
+            float: left;
+            width: 49%;
+            padding: 8px;
+            padding-bottom: 5px;
+            line-height: 26px;
+          "
+        >
+          <input
+            class="form-control"
+            placeholder="OverTime"
+            required
+            type="text"
+            name="OverTime"
+          />
+          <input
+            class="form-control"
+            placeholder="DistanceFromHome"
+            required
+            type="text"
+            name="DistanceFromHome"
+          />
           <input
             class="form-control"
             placeholder="Age"
             required
             type="text"
             name="Age"
-          />
-          <input
-            class="form-control"
-            placeholder="BusinessTravel(Non-Travel: 0,Travel_Frequently: 1,Travel_Rarely: 2)"
-            required
-            type="text"
-            name="BusinessTravel"
-          />
-          <input
-            class="form-control"
-            placeholder="DailyRate"
-            required
-            type="text"
-            name="DailyRate"
-          />
-          <input
-            class="form-control"
-            placeholder="Department"
-            required
-            type="text"
-            name="Department"
-          />
-          <input
-            class="form-control"
-            placeholder="DistanceFromHome"
-            type="text"
-            required
-            name="DistanceFromHome"
-          />
-          <input
-            class="form-control"
-            placeholder="Education"
-            required
-            type="text"
-            name="Education"
-          />
-          <input
-            class="form-control"
-            placeholder="EducationField"
-            required
-            type="text"
-            name="EducationField"
           />
           <input
             class="form-control"
@@ -116,55 +95,10 @@
           />
           <input
             class="form-control"
-            placeholder="Gender"
-            required
-            type="text"
-            name="Gender"
-          />
-          <input
-            class="form-control"
-            placeholder="HourlyRate"
-            required
-            type="text"
-            name="HourlyRate"
-          />
-        </div>
-
-        <div style="float: left; width: 33%">
-          <input
-            class="form-control"
-            placeholder="JobInvolvement"
-            required
-            type="text"
-            name="JobInvolvement"
-          />
-          <input
-            class="form-control"
-            placeholder="JobLevel"
-            required
-            type="text"
-            name="JobLevel"
-          />
-          <input
-            class="form-control"
-            placeholder="JobRole"
-            required
-            type="text"
-            name="JobRole"
-          />
-          <input
-            class="form-control"
-            placeholder="JobSatisfaction"
-            required
-            type="text"
-            name="JobSatisfaction"
-          />
-          <input
-            class="form-control"
-            placeholder="MaritalStatus"
+            placeholder="TotalWorkingYears"
             type="text"
             required
-            name="MaritalStatus"
+            name="TotalWorkingYears"
           />
           <input
             class="form-control"
@@ -175,69 +109,24 @@
           />
           <input
             class="form-control"
-            placeholder="MonthlyRate"
+            placeholder="YearsAtCompany"
             required
             type="text"
-            name="MonthlyRate"
+            name="YearsAtCompany"
           />
           <input
             class="form-control"
-            placeholder="NumCompaniesWorked"
+            placeholder="JobRole"
             required
             type="text"
-            name="NumCompaniesWorked"
+            name="JobRole"
           />
           <input
             class="form-control"
-            placeholder="OverTime"
+            placeholder="JobInvolvement"
             required
             type="text"
-            name="OverTime"
-          />
-          <input
-            class="form-control"
-            placeholder="PercentSalaryHike"
-            required
-            type="text"
-            name="PercentSalaryHike"
-          />
-        </div>
-
-        <div style="float: right; width: 34%">
-          <input
-            class="form-control"
-            placeholder="PerformanceRating"
-            required
-            type="text"
-            name="PerformanceRating"
-          />
-          <input
-            class="form-control"
-            placeholder="RelationshipSatisfaction"
-            required
-            type="text"
-            name="RelationshipSatisfaction"
-          />
-          <input
-            class="form-control"
-            placeholder=" StockOptionLevel"
-            required
-            type="text"
-            name="StockOptionLevel"
-          />
-          <input
-            class="form-control"
-            placeholder="TotalWorkingYears"
-            required
-            type="text"
-            name="TotalWorkingYears"
-          />
-          <input
-            class="form-control"
-            placeholder="TrainingTimesLastYear "
-            type="text"
-            required
-            name="TrainingTimesLastYear"
+            name="JobInvolvement"
           />
           <input
             class="form-control"
@@ -246,12 +135,15 @@
             type="text"
             name="WorkLifeBalance"
           />
+        </div>
+
+        <div style="float: right; width: 49%; padding: 8px">
           <input
             class="form-control"
-            placeholder="YearsAtCompany"
+            placeholder="JobLevel"
             required
             type="text"
-            name="YearsAtCompany"
+            name="JobLevel"
           />
           <input
             class="form-control"
@@ -262,10 +154,52 @@
           />
           <input
             class="form-control"
+            placeholder="DailyRate"
+            required
+            type="text"
+            name="DailyRate"
+          />
+          <input
+            class="form-control"
+            placeholder="MaritalStatus"
+            required
+            type="text"
+            name="MaritalStatus"
+          />
+          <input
+            class="form-control"
+            placeholder="JobSatisfaction"
+            type="text"
+            required
+            name="JobSatisfaction"
+          />
+          <input
+            class="form-control"
+            placeholder="TrainingTimesLastYear"
+            required
+            type="text"
+            name="TrainingTimesLastYear"
+          />
+          <input
+            class="form-control"
             placeholder="YearsSinceLastPromotion"
             required
             type="text"
             name="YearsSinceLastPromotion"
+          />
+          <input
+            class="form-control"
+            placeholder="MonthlyRate"
+            required
+            type="text"
+            name="MonthlyRate"
+          />
+          <input
+            class="form-control"
+            placeholder="StockOptionLevel"
+            required
+            type="text"
+            name="StockOptionLevel"
           />
           <input
             class="form-control"
@@ -278,7 +212,7 @@
       </div>
 
       <input
-        class="btn btn-primary btn-lg btn-block"
+        class="btn btn-warning btn-lg btn-block"
         type="submit"
         value="Predict"
       />
